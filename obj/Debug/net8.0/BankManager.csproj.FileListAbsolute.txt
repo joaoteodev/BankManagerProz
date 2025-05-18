@@ -1,0 +1,14 @@
+C:\dev\csharp\Proz\BankManager\bin\Debug\net8.0\BankManager.exe
+C:\dev\csharp\Proz\BankManager\bin\Debug\net8.0\BankManager.deps.json
+C:\dev\csharp\Proz\BankManager\bin\Debug\net8.0\BankManager.runtimeconfig.json
+C:\dev\csharp\Proz\BankManager\bin\Debug\net8.0\BankManager.dll
+C:\dev\csharp\Proz\BankManager\bin\Debug\net8.0\BankManager.pdb
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.AssemblyInfoInputs.cache
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.AssemblyInfo.cs
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.csproj.CoreCompileInputs.cache
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.dll
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\refint\BankManager.dll
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.pdb
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.genruntimeconfig.cache
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\ref\BankManager.dll

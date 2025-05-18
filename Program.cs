@@ -1,0 +1,3 @@
+﻿using BankManager;
+
+Menu.Start();
