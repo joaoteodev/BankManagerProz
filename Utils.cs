@@ -21,9 +21,18 @@ public static class Utils
         Console.WriteLine();
     }
 
+    public static void Message(string msg = "Mensagem padrão", float seconds = 1)
+    {
+        int total = (int)(seconds * 1000);
+
+        Title(msg);
+        Thread.Sleep(total);
+    }
+
     public static void Exit()
     {
-        Utils.Dash("-", 40);
+        Console.WriteLine();
+        Dash("-", 40);
         Console.Write("Pressione qualquer tecla para continuar.");
         Console.ReadKey();
     }

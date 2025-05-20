@@ -4,6 +4,8 @@ namespace BankManager;
 
 public static class ClientActions
 {
+    static List<ClientModel> allClients = Database.Clients;
+
     public static void RegisterClient()
     {
         Utils.Title("Menu - Cadastrar novo cliente");
@@ -34,22 +36,19 @@ public static class ClientActions
                 break;
             }
 
-            Utils.Title("Nome do cliente não pode ser vazio.");
-            Thread.Sleep(1000);
+            Utils.Message("Nome do cliente não pode ser vazio.");
         }
 
         while (true)
         {
             BankActions.ShowAllBanks();
+            Console.WriteLine();
             Console.Write("Selecione o banco do cliente: ");
             var bankSelected = Console.ReadLine().Trim();
 
             try
             {
                 clientBank = Convert.ToInt32(bankSelected);
-
-                Console.WriteLine($"!Debug! ClientBank: {clientBank}");
-                Thread.Sleep(3000);
 
                 if (clientBank < 0 || clientBank > Database.Banks.Count)
                 {
@@ -60,8 +59,7 @@ public static class ClientActions
             }
             catch (Exception ex)
             {
-                Utils.Title(ex.Message);
-                Thread.Sleep(1000);
+                Utils.Message(ex.Message);
             }
         }
 
@@ -74,19 +72,12 @@ public static class ClientActions
 
         Database.Clients.Add(client);
 
-        Utils.Title("Cadastrando cliente...");
-        Thread.Sleep(1000);
-
-        Utils.Title($"{clientName} foi cadastrado com sucesso!");
-        Thread.Sleep(2000);
+        Utils.Message("Cadastrando cliente...");
+        Utils.Message($"{clientName} foi cadastrado com sucesso!", 2);
     }
 
-    public static void ShowClients()
+    private static void ShowAllClients()
     {
-        Utils.Title("Lista de clientes cadastrados");
-
-        var allClients = Database.Clients;
-
         if (allClients.Count == 0)
             Console.WriteLine("Nenhum cliente cadastrado no sistema.");
 
@@ -101,10 +92,109 @@ public static class ClientActions
             Console.WriteLine(msg);
             Utils.Dash("-", msg.Length);
         }
+    }
 
+    public static void ShowClients()
+    {
+        Utils.Title("Lista de clientes cadastrados");
+
+        ShowAllClients();
         //Console.WriteLine();
         //Console.Write("Pressione qualquer tecla para continuar.");
         //Console.ReadKey();
         Utils.Exit();
+    }
+
+    public static void UpdateClientName()
+    {
+        Utils.Title("Editando nome do cliente");
+
+        if (allClients.Count == 0)
+            Utils.Exit();
+
+        string newClientName;
+        string register;
+        ClientModel client;
+
+        while (true)
+        {
+            try
+            {
+                ShowAllClients();
+                Console.WriteLine();
+
+                Console.Write("Digite o registro do cliente: ");
+                register = Console.ReadLine().Trim().ToUpper();
+
+                if (string.IsNullOrEmpty(register))
+                {
+                    Console.Clear();
+                    throw new Exception("Registro não pode estar vazio.");
+                }
+
+                client = allClients.First(c => c.Id == register);
+
+                if (client == null)
+                {
+                    throw new Exception("Cliente não encontrado. Tente novamente");
+                }
+
+                break;
+            }
+            catch (Exception ex)
+            {
+                Utils.Message(ex.Message);
+            }
+        }
+
+        while (true)
+        {
+            try
+            {
+                Console.Clear();
+                Utils.Title($"[Atualizando] Registro: {client.Id} - Nome: {client.Name} - Banco: {client.Bank.Name}");
+                Console.WriteLine();
+
+                Console.Write("Digite o novo nome: ");
+                newClientName = Console.ReadLine().Trim();
+
+                if (string.IsNullOrEmpty(newClientName))
+                {
+                    throw new Exception("Nome do cliente não pode estar em branco.");
+                }
+
+                break;
+            }
+            catch (Exception ex)
+            {
+                Utils.Message(ex.Message);
+            }
+        }
+
+        Utils.Message("Atualizando nome do cliente...");
+
+        Database.Clients = Database.Clients.Select(c =>
+        {
+            if (c.Id == register)
+            {
+                c.Name = newClientName;
+            }
+
+            return c;
+        }).ToList();
+
+        //var updatedList = Database.Clients.Select(c =>
+        //{
+        //    if (c.Id == register)
+        //    {
+        //        c.Name = newClientName;
+        //    }
+
+        //    return c;
+        //}).ToList();
+
+        //updatedList.CopyTo(0, Database.Clients);
+
+        Utils.Message("Nome do cliente atualizado com sucesso!");
     }
 }

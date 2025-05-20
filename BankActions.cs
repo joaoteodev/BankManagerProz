@@ -4,6 +4,8 @@ namespace BankManager;
 
 public static class BankActions
 {
+    private static List<BankModel> allBanks = Database.Banks;
+
     public static void RegisterBank()
     {
         string bankName;
@@ -23,25 +25,20 @@ public static class BankActions
             }
             catch (Exception ex)
             {
-                Utils.Title(ex.Message);
-                Thread.Sleep(1000);
+                Utils.Message(ex.Message);
             }
         }
 
         var bank = new BankModel() { Id = Guid.NewGuid().ToString().ToUpper().Substring(0, 8), Name = bankName };
         Database.Banks.Add(bank);
 
-        Utils.Title("Salvando banco...");
-        Thread.Sleep(1000);
-
-        Utils.Title($"{bankName} foi registrado com sucesso!");
-        Thread.Sleep(2000);
+        Utils.Message("Salvando banco...");
+        Utils.Message($"{bankName} foi registrado com sucesso!", 2);
     }
 
     public static void ShowAllBanks()
     {
         Utils.Title("Lista de bancos registrados");
-        var allBanks = Database.Banks;
 
         if (allBanks.Count == 0)
         {
@@ -60,14 +57,11 @@ public static class BankActions
             Console.WriteLine(msg);
             Utils.Dash("-", msg.Length);
         }
-
-        Console.WriteLine();
     }
 
     public static void ShowBanks()
     {
         ShowAllBanks();
-
         Utils.Exit();
         //Console.Write("Pressione qualquer tecla para sair.");
         //Console.ReadKey();
@@ -82,15 +76,17 @@ public static class BankActions
 
         if (Database.Banks.Count == 0)
         {
-            Console.WriteLine();
-            Console.Write("Pressione qualquer tecla para continuar.");
-            Console.ReadKey();
+            //Console.WriteLine();
+            //Console.Write("Pressione qualquer tecla para continuar.");
+            //Console.ReadKey();
+            Utils.Exit();
             return;
         }
 
         while (true)
         {
             ShowAllBanks();
+            Console.WriteLine();
             Console.Write("Selecione um banco: ");
             var bankSelected = Console.ReadLine();
 
@@ -101,8 +97,7 @@ public static class BankActions
             }
             catch (Exception ex)
             {
-                Utils.Title(ex.Message);
-                Thread.Sleep(1000);
+                Utils.Message(ex.Message);
             }
         }
 
@@ -118,19 +113,14 @@ public static class BankActions
             {
                 Database.Banks[numberBank - 1].Name = textInput;
 
-                Utils.Title("Atualizando...");
-                Thread.Sleep(1000);
-
-                Utils.Title("Nome atualizado com sucesso!");
-                Thread.Sleep(1000);
-
+                Utils.Message("Atualizando...");
+                Utils.Message("Nome atualizado com sucesso!");
                 break;
             }
 
             Utils.Dash();
             Console.WriteLine();
-            Console.WriteLine("Nome do banco não pode estar em branco.");
-            Thread.Sleep(1000);
+            Utils.Message("Nome do banco não pode estar em branco.");
             Console.Clear();
         }
     }

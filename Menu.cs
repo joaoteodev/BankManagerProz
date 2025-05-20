@@ -66,6 +66,7 @@ public static class Menu
             case "3": BankActions.ShowBanks(); break;
             case "4": ClientActions.ShowClients(); break;
             case "5": BankActions.UpdateBank(); break;
+            case "6": ClientActions.UpdateClientName(); break;
             case "X":
                 {
                     Utils.Title("Saindo...");

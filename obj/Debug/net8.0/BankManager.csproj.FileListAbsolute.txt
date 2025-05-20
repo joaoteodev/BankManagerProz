@@ -12,3 +12,4 @@ C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\refint\BankManager.dll
 C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.pdb
 C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.genruntimeconfig.cache
 C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\ref\BankManager.dll
+C:\dev\csharp\Proz\BankManager\obj\Debug\net8.0\BankManager.sourcelink.json
