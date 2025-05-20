@@ -109,8 +109,13 @@ public static class ClientActions
     {
         Utils.Title("Editando nome do cliente");
 
+        ShowAllClients();
+
         if (allClients.Count == 0)
+        {
             Utils.Exit();
+            return;
+        }
 
         string newClientName;
         string register;
@@ -120,9 +125,7 @@ public static class ClientActions
         {
             try
             {
-                ShowAllClients();
                 Console.WriteLine();
-
                 Console.Write("Digite o registro do cliente: ");
                 register = Console.ReadLine().Trim().ToUpper();
 
@@ -144,6 +147,7 @@ public static class ClientActions
             catch (Exception ex)
             {
                 Utils.Message(ex.Message);
+                ShowAllClients();
             }
         }
 
@@ -153,7 +157,6 @@ public static class ClientActions
             {
                 Console.Clear();
                 Utils.Title($"[Atualizando] Registro: {client.Id} - Nome: {client.Name} - Banco: {client.Bank.Name}");
-                Console.WriteLine();
 
                 Console.Write("Digite o novo nome: ");
                 newClientName = Console.ReadLine().Trim();
@@ -196,5 +199,104 @@ public static class ClientActions
         //updatedList.CopyTo(0, Database.Clients);
 
         Utils.Message("Nome do cliente atualizado com sucesso!");
+    }
+
+    public static void UpdateClientBank()
+    {
+        Utils.Title("Atualizando banco do cliente");
+
+        ShowAllClients();
+        Console.WriteLine();
+
+        if (allClients.Count == 0)
+        {
+            Utils.Exit();
+            return;
+        }
+
+        int newClientBank;
+        string register;
+        ClientModel client;
+
+        while (true)
+        {
+            try
+            {
+                Console.Write("Digite o registro do cliente: ");
+                register = Console.ReadLine().Trim().ToUpper();
+
+                if (string.IsNullOrEmpty(register))
+                {
+                    Console.Clear();
+                    throw new Exception("Registro não pode estar vazio.");
+                }
+
+                client = allClients.First(c => c.Id == register);
+
+                if (client == null)
+                {
+                    throw new Exception("Cliente não encontrado. Tente novamente");
+                }
+
+                break;
+            }
+            catch (Exception ex)
+            {
+                Utils.Message(ex.Message);
+                ShowAllClients();
+                Console.WriteLine();
+            }
+        }
+
+        while (true)
+        {
+            Utils.Title($"[Atualizando] Registro: {client.Id} - Nome: {client.Name} - Banco: {client.Bank.Name}");
+
+            BankActions.ShowAllBanks();
+            Console.WriteLine();
+            Console.Write("Selecione o banco do cliente: ");
+            var newBankSelected = Console.ReadLine().Trim();
+
+            try
+            {
+                newClientBank = Convert.ToInt32(newBankSelected);
+
+                if (newClientBank < 0 || newClientBank > Database.Banks.Count)
+                {
+                    throw new Exception("Valor inválido. Selecione um dos bancos exibidos.");
+                }
+
+                break;
+            }
+            catch (Exception ex)
+            {
+                Utils.Message(ex.Message);
+            }
+        }
+
+        Utils.Message("Atualizando banco do cliente...");
+
+        Database.Clients = Database.Clients.Select(c =>
+        {
+            if (c.Id == register)
+            {
+                c.Bank = Database.Banks[newClientBank - 1];
+            }
+            return c;
+        }).ToList();
+
+        //var updatedList = Database.Clients.Select(c =>
+        //{
+        //    if (c.Id == register)
+        //    {
+        //        c.Name = newClientName;
+        //    }
+
+        //    return c;
+        //}).ToList();
+
+        //updatedList.CopyTo(0, Database.Clients);
+
+        Utils.Message("Banco do cliente atualizado com sucesso!");
     }
 }

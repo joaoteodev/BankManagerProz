@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:clientactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\model\\bankmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:model\\bankmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|c:\\dev\\csharp\\proz\\bankmanager\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2709B5A-5D11-4204-AABE-1EF206DB91B2}|BankManager.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BankActions.cs",
               "DocumentMoniker": "C:\\dev\\csharp\\Proz\\BankManager\\BankActions.cs",
               "RelativeDocumentMoniker": "BankActions.cs",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "BankModel.cs",
               "DocumentMoniker": "C:\\dev\\csharp\\Proz\\BankManager\\Model\\BankModel.cs",
               "RelativeDocumentMoniker": "Model\\BankModel.cs",
@@ -78,14 +78,14 @@
               "RelativeDocumentMoniker": "Database.cs",
               "ToolTip": "C:\\dev\\csharp\\Proz\\BankManager\\Database.cs",
               "RelativeToolTip": "Database.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T23:39:59.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\dev\\csharp\\Proz\\BankManager\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -98,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Utils.cs",
               "DocumentMoniker": "C:\\dev\\csharp\\Proz\\BankManager\\Utils.cs",
               "RelativeDocumentMoniker": "Utils.cs",
@@ -117,20 +117,20 @@
               "RelativeDocumentMoniker": "ClientActions.cs",
               "ToolTip": "C:\\dev\\csharp\\Proz\\BankManager\\ClientActions.cs",
               "RelativeToolTip": "ClientActions.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAwwH8AAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAgwPYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T02:07:57.284Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\dev\\csharp\\Proz\\BankManager\\Menu.cs",
               "RelativeDocumentMoniker": "Menu.cs",
               "ToolTip": "C:\\dev\\csharp\\Proz\\BankManager\\Menu.cs",
               "RelativeToolTip": "Menu.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAswEMAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAywBIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-17T20:26:07.893Z",
               "EditorCaption": ""
