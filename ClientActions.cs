@@ -28,7 +28,7 @@ public static class ClientActions
             string sign = "-";
             Utils.Dash(sign);
             Console.Write("Digite o nome do cliente: ");
-            clientName = Console.ReadLine().Trim();
+            clientName = (Console.ReadLine() ?? string.Empty).Trim();
             Utils.Dash(sign);
 
             if (clientName != string.Empty)
@@ -44,7 +44,7 @@ public static class ClientActions
             BankActions.ShowAllBanks();
             Console.WriteLine();
             Console.Write("Selecione o banco do cliente: ");
-            var bankSelected = Console.ReadLine().Trim();
+            var bankSelected = (Console.ReadLine() ?? string.Empty).Trim();
 
             try
             {
@@ -52,7 +52,7 @@ public static class ClientActions
 
                 if (clientBank < 0 || clientBank > Database.Banks.Count)
                 {
-                    throw new Exception("Valor inválido. Selecione um dos bancos exibidos.");
+                    throw new ArgumentException("Valor inválido. Selecione um dos bancos exibidos.");
                 }
 
                 break;
@@ -65,7 +65,7 @@ public static class ClientActions
 
         var client = new ClientModel()
         {
-            Id = Guid.NewGuid().ToString().ToUpper().Substring(0, 8),
+            Id = Utils.GenerateId(),
             Name = clientName,
             Bank = Database.Banks[clientBank - 1]
         };
@@ -84,7 +84,7 @@ public static class ClientActions
         for (var i = 0; i < allClients.Count; i++)
         {
             var currentClient = allClients[i];
-            var msg = $"ID: {currentClient.Id} - Cliente: {currentClient.Name} - Banco: {currentClient.Bank.Name}";
+            var msg = $"Registro (ID): {currentClient.Id} - Cliente: {currentClient.Name} - Banco: {currentClient.Bank.Name}";
 
             if (i == 0)
                 Utils.Dash("-", msg.Length);
@@ -127,19 +127,19 @@ public static class ClientActions
             {
                 Console.WriteLine();
                 Console.Write("Digite o registro do cliente: ");
-                register = Console.ReadLine().Trim().ToUpper();
+                register = (Console.ReadLine() ?? string.Empty).Trim().ToUpper();
 
                 if (string.IsNullOrEmpty(register))
                 {
                     Console.Clear();
-                    throw new Exception("Registro não pode estar vazio.");
+                    throw new ArgumentException("Registro não pode estar vazio.");
                 }
 
                 client = allClients.First(c => c.Id == register);
 
                 if (client == null)
                 {
-                    throw new Exception("Cliente não encontrado. Tente novamente");
+                    throw new ArgumentException("Cliente não encontrado. Tente novamente");
                 }
 
                 break;
@@ -159,11 +159,11 @@ public static class ClientActions
                 Utils.Title($"[Atualizando] Registro: {client.Id} - Nome: {client.Name} - Banco: {client.Bank.Name}");
 
                 Console.Write("Digite o novo nome: ");
-                newClientName = Console.ReadLine().Trim();
+                newClientName = (Console.ReadLine() ?? string.Empty).Trim();
 
                 if (string.IsNullOrEmpty(newClientName))
                 {
-                    throw new Exception("Nome do cliente não pode estar em branco.");
+                    throw new ArgumentException("Nome do cliente não pode estar em branco.");
                 }
 
                 break;
@@ -206,7 +206,6 @@ public static class ClientActions
         Utils.Title("Atualizando banco do cliente");
 
         ShowAllClients();
-        Console.WriteLine();
 
         if (allClients.Count == 0)
         {
@@ -222,20 +221,21 @@ public static class ClientActions
         {
             try
             {
+                Console.WriteLine();
                 Console.Write("Digite o registro do cliente: ");
-                register = Console.ReadLine().Trim().ToUpper();
+                register = (Console.ReadLine() ?? string.Empty).Trim().ToUpper();
 
                 if (string.IsNullOrEmpty(register))
                 {
                     Console.Clear();
-                    throw new Exception("Registro não pode estar vazio.");
+                    throw new ArgumentException("Registro não pode estar vazio.");
                 }
 
                 client = allClients.First(c => c.Id == register);
 
                 if (client == null)
                 {
-                    throw new Exception("Cliente não encontrado. Tente novamente");
+                    throw new ArgumentException("Cliente não encontrado. Tente novamente");
                 }
 
                 break;
@@ -255,7 +255,7 @@ public static class ClientActions
             BankActions.ShowAllBanks();
             Console.WriteLine();
             Console.Write("Selecione o banco do cliente: ");
-            var newBankSelected = Console.ReadLine().Trim();
+            var newBankSelected = (Console.ReadLine() ?? string.Empty).Trim();
 
             try
             {
@@ -263,7 +263,7 @@ public static class ClientActions
 
                 if (newClientBank < 0 || newClientBank > Database.Banks.Count)
                 {
-                    throw new Exception("Valor inválido. Selecione um dos bancos exibidos.");
+                    throw new ArgumentException("Valor inválido. Selecione um dos bancos exibidos.");
                 }
 
                 break;

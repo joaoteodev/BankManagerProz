@@ -16,12 +16,12 @@ public static class BankActions
             {
                 Utils.Title("[Menu] Registrar novo banco");
                 Console.Write("Digite o nome do banco: ");
-                bankName = Console.ReadLine().Trim();
+                bankName = (Console.ReadLine() ?? string.Empty).Trim();
 
                 if (!(bankName == string.Empty))
                     break;
 
-                throw new Exception("Nome do banco não pode ser vazio.");
+                throw new ArgumentException("Nome do banco não pode ser vazio.");
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ public static class BankActions
             }
         }
 
-        var bank = new BankModel() { Id = Guid.NewGuid().ToString().ToUpper().Substring(0, 8), Name = bankName };
+        var bank = new BankModel() { Id = Utils.GenerateId(), Name = bankName };
         Database.Banks.Add(bank);
 
         Utils.Message("Salvando banco...");
@@ -107,7 +107,7 @@ public static class BankActions
         {
             Utils.Dash();
             Console.Write("Digite o nome do banco: ");
-            var textInput = Console.ReadLine().Trim();
+            var textInput = (Console.ReadLine() ?? string.Empty).Trim();
 
             if (!(textInput == string.Empty))
             {

@@ -36,4 +36,6 @@ public static class Utils
         Console.Write("Pressione qualquer tecla para continuar.");
         Console.ReadKey();
     }
+
+    public static string GenerateId() => Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
 }
